@@ -13,10 +13,16 @@ import  orderRoutes from './routes/orderRoutes.js'
 import  uploadRoutes from './routes/uploadRoutes.js'
 import  searchRoutes from './routes/searchRoutes.js'
 import {notFound, errorHandler} from './middleware/errorMiddleware.js'
+const cors=require("cors");
 const app = express()
 
 app.use(express.json())
-
+const corsOptions ={
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+ }
+ app.use(cors(corsOptions))
 dotenv.config()
 
 connectDB()
